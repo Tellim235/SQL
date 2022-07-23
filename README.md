@@ -9,7 +9,7 @@
 Задание: 1
 >Найдите номер модели, скорость и размер жесткого диска для всех ПК стоимостью менее 500 дол. Вывести: model, speed и hd
 ```sql
-SELECT model, speed, hd FROM PC 
+SELECT model, speed, hd FROM pc 
 WHERE price < 500
 ```
 Задание: 2
@@ -33,7 +33,7 @@ WHERE color = 'y'
 Задание: 5
 >Найдите номер модели, скорость и размер жесткого диска ПК, имеющих 12x или 24x CD и цену менее 600 дол.
 ```sql
-SELECT model, speed, hd FROM PC 
+SELECT model, speed, hd FROM pc 
 WHERE (cd='12x' OR cd='24x') AND price < 600
 ```
 Задание: 6
@@ -48,7 +48,7 @@ WHERE Laptop.hd >= 10 AND Product.type = 'Laptop'
 ```sql
 SELECT a.model, price FROM 
 (
-SELECT model, price FROM PC 
+SELECT model, price FROM pc 
  UNION
 SELECT model, price FROM Laptop
  UNION
@@ -59,7 +59,7 @@ WHERE p.maker = 'B'
 Задание: 8
 >Найдите производителя, выпускающего ПК, но не ПК-блокноты.
 ```sql
-SELECT maker FROM Product WHERE type = 'PC'
+SELECT maker FROM Product WHERE type = 'pc'
 EXCEPT
 SELECT maker FROM Product WHERE type = 'Laptop'
 ```
@@ -79,7 +79,7 @@ WHERE price = (SELECT MAX(price) FROM Printer)
 Задание: 11
 >Найдите среднюю скорость ПК.
 ```sql
-SELECT AVG(Speed) FROM PC
+SELECT AVG(speed) FROM pc
 ```
 Задание: 12
 >Найдите среднюю скорость ПК-блокнотов, цена которых превышает 1000 дол.
@@ -91,15 +91,15 @@ WHERE price > 1000
 >Найдите среднюю скорость ПК, выпущенных производителем A.
 ```sql
 SELECT AVG(speed) FROM product 
-JOIN PC ON Product.model = pc.model
+JOIN pc ON Product.model = pc.model
 WHERE maker = 'A'
 ```
 Задание: 14
 >Найдите размеры жестких дисков, совпадающих у двух и более PC. Вывести: HD
 ```sql
-SELECT HD FROM PC 
+SELECT hd FROM pc 
 GROUP BY hd
-HAVING count(hd) >= 2
+HAVING COUNT(hd) >= 2
 ```
 Задание: 15
 >Используя таблицу Product, определить количество производителей, выпускающих по одной модели.
